@@ -1,0 +1,33 @@
+{
+  "AWSEBDockerrenVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "frontend",
+      "image": "siriusda2/docker-frontend",
+      "hostname": "frontend",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "backend",
+      "image": "siriusda2/docker-backend",
+      "hostname": "backend",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "nginx",
+      "image": "siriusda2/docker-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["frontedn", "backend"],
+      "memory": 128
+    }
+  ]
+}
